@@ -1,4 +1,5 @@
-# S.U.P.E.R.M.A.N.
+# S.U.P.E.R.M.A.N. German Translation
+Same script as the original but translated in German.
 
 ### Software Update Policy Enforcement (with) Recursive Messaging And Notification
 
