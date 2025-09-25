@@ -9018,50 +9018,50 @@ run_jamf_policy_triggers() {
 # Set language strings for dialogs and notifications.
 set_display_strings_language() {
 	#### Langauge for the restart button in dialogs.
-	display_string_restart_now_button="Restart Now"
+	display_string_restart_now_button="Neustarten"
 	
 	#### Langauge for the install button in dialogs.
-	display_string_install_now_button="Install Now"
+	display_string_install_now_button="Installieren"
 	
 	#### Langauge for the download button in dialogs.
-	display_string_download_now_button="Download Now"
+	display_string_download_now_button="Herunterladen"
 	
 	#### Language for the defer button in dialogs when the deferral time is sometime today.
-	display_string_defer_today_button="Defer"
+	display_string_defer_today_button="Verschieben"
 	
 	#### Language for the defer button in dialogs when the deferral time is after tomorrow.
-	display_string_defer_tomorrow_button="Defer Until Tomorrow"
+	display_string_defer_tomorrow_button="Bis morgen verschieben"
 	
 	#### Language for the defer button in dialogs when the deferral time is after tomorrow.
-	display_string_defer_future_button="Defer Until"
+	display_string_defer_future_button="Verschieben bis"
 	
 	#### Language for the user schedule restart button in dialogs.
-	display_string_schedule_restart_button="Schedule Restart"
+	display_string_schedule_restart_button="Neustart planen"
 	
 	#### Language for the user schedule installation button in Jamf Pro Policy dialogs.
-	display_string_schedule_install_button="Schedule Installation"
+	display_string_schedule_install_button="Installation planen"
 	
 	#### Language for the user reschedule button in dialogs.
-	display_string_reschedule_button="Reschedule"
+	display_string_reschedule_button="Verschiebem"
 	
 	#### Language for the cancel button in certain dialogs and notifications.
-	display_string_cancel_button="Cancel"
+	display_string_cancel_button="Abbrechen"
 	
 	#### Language for the OK button in certain dialogs and notifications.
 	display_string_ok_button="OK"
 	
 	### Language for various deferral timer durations.
-	display_string_minutes="Minutes"
-	display_string_hour="Hour"
-	display_string_hours="Hours"
-	display_string_and="and"
+	display_string_minutes="Minuten"
+	display_string_hour="Stunde"
+	display_string_hours="Stunden"
+	display_string_and="und"
 	
 	#### This code generates the ${display_string_workflow_title} variable to include the appropriate upgrade workflow title .
-	if [[ "${workflow_target}" == "Non-system Software Updates" ]]; then
+	if [[ "${workflow_target}" == "Updates für sonstige Software" ]]; then
 		display_string_workflow_title="Apple Software Updates"
-	elif [[ "${workflow_target}" == "Jamf Pro Policy Triggers Without Restarting" ]] || [[ "${workflow_target}" == "Jamf Pro Policy Triggers With Restart" ]]; then
+	elif [[ "${workflow_target}" == "Jamf Pro Policy-Auslöser ohne Neustart" ]] || [[ "${workflow_target}" == "Jamf Pro Policy-Auslöser mit Neustart" ]]; then
 		display_string_workflow_title="Jamf Pro Policies"
-	elif [[ "${workflow_target}" == "Restart Without Updates" ]]; then
+	elif [[ "${workflow_target}" == "Neustart ohne Updates" ]]; then
 		display_string_workflow_title="Management"
 	else # Standard macOS update/upgrade workflows removes the build number to simplify the dialogs.
 		# shellcheck disable=SC2001
@@ -9086,127 +9086,127 @@ set_display_strings_language() {
 	# For body text note that IBM Notifier interprets "\n" as a return.
 	
 	#### Language for notification_install_now_start(), a non-interactive notification informing the user that the install now workflow has started.
-	display_string_install_now_start_title="Software Update Workflow Starting"
-	display_string_install_now_start_body="The software update workflow has started, and you will be notified if this computer needs to restart.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the macOS software update process."
+	display_string_install_now_start_title="Software Update Workflow startet"
+	display_string_install_now_start_body="Der Software-Update-Workflow wurde gestartet. Sie werden benachrichtigt, falls ein Neustart des Computers erforderlich ist.\n\nWährend des Vorgangs können Sie den Computer weiterhin nutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn auch nicht in den Ruhezustand, da dies den macOS-Update-Prozess erheblich verzögern kann."
 	
 	#### Language for notification_install_now_download(), a non-interactive notification informing the user that the install now workflow is downloading the macOS update/upgrade.
 	display_string_install_now_download_title="Downloading ${display_string_workflow_title}"
-	display_string_install_now_download_body="The ${display_string_workflow_title} is downloading from Apple. This may take a while, but you will be notified before this computer automatically restarts.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the update/upgrade process."
+	display_string_install_now_download_body="Die ${display_string_workflow_title} werden von Apple heruntergeladen. Dies kann eine Weile dauern, aber Sie werden benachrichtigt, bevor der Computer automatisch neu gestartet wird.\n\nWährend dieses Vorgangs können Sie den Computer weiterhin verwenden oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn auch nicht in den Ruhezustand, da dies den Update-/Upgrade-Prozess verlängern würde."
 	
 	#### Language for notification_install_now_up_to_date(), a non-interactive notification informing the user that the install now workflow doesn't have anything else to do.
-	display_string_install_now_up_to_date_title="Update Workflow Complete"
-	display_string_install_now_up_to_date_body="All software is already up to date or is the latest version allowed by management."
+	display_string_install_now_up_to_date_title="Updatevorgang erfolgreich beendet"
+	display_string_install_now_up_to_date_body="Alle Programme sind bereits aktuell oder auf dem neuesten von der IT freigegebenen Stand."
 	
 	#### Language for notification_install_now_failed(), a non-interactive notification informing the user that the install now workflow has failed.
 	# This is used for all update/upgrade workflows if they fail to start or timeout after a pending restart notification has been shown.
-	display_string_install_now_failed_title="${display_string_workflow_title} Failed"
-	display_string_install_now_failed_body="${display_string_workflow_title} installation failed to complete.\n\nYou can try again or consider contacting your technical support team if you're experiencing consistent failures."
+	display_string_install_now_failed_title="${display_string_workflow_title} fehlgeschlagen"
+	display_string_install_now_failed_body="${display_string_workflow_title} installation konnte nicht abgeschlossen werden. \n\nSie können es erneut versuchen oder sich an Ihr IT-Support-Team wenden, falls das Problem weiterhin besteht."
 	
 	#### Language for notification_jamf_pro_policy(), a non-interactive notification informing the user that a Jamf Pro Policy has started.
 	# This is used for both non-deadline and deadline workflows.
-	display_string_jamf_pro_policy_title="Running Jamf Pro Policy ${jamf_policy_trigger}"
-	display_string_jamf_pro_policy_default_body="During this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the process."
-	display_string_jamf_pro_policy_deadline_schedule_body="A scheduled installation date of ${display_string_scheduled_install} has passed.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the process."
-	display_string_jamf_pro_policy_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the process."
-	display_string_jamf_pro_policy_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the process."
+	display_string_jamf_pro_policy_title="Ausführen der Jamf Pro-Richtlinie ${jamf_policy_trigger}"
+	display_string_jamf_pro_policy_default_body="Während dieser Zeit können Sie den Computer weiter verwenden oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Vorgang verlängern würde."
+	display_string_jamf_pro_policy_deadline_schedule_body="Ein geplanter Installationstermin am ${display_string_scheduled_install} ist verstrichen. \n\nWährend dieser Zeit können Sie den Computer weiterhin benutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Vorgang verlängern würde."
+	display_string_jamf_pro_policy_deadline_count_body="Sie haben die maximale Anzahl von ${display_string_deadline_count_maximum} Verschiebungen erreicht. \n\nWährend dieser Zeit können Sie den Computer weiterhin benutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Vorgang verlängern würde."
+	display_string_jamf_pro_policy_deadline_date_body="Die Aufschubfrist vom ${display_string_deadline} ist abgelaufen. \n\nWährend dieser Zeit können Sie den Computer weiterhin verwenden oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Vorgang verlängern würde."
 	
 	#### Language for notification_prepare(), a non-interactive notification informing the user that a update/upgrade preparation process has started.
 	# This is used for both non-deadline and deadline workflows.
-	display_string_prepare_title="${display_string_workflow_title} System Restart"
-	display_string_prepare_default_body="A required software update will automatically restart this computer in about ${display_string_prepare_time_estimate} minutes.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the update process."
-	display_string_prepare_deadline_schedule_body="A scheduled installation date of ${display_string_scheduled_install} has passed.\n\nA required software update will automatically restart this computer in about ${display_string_prepare_time_estimate} minutes.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the update process."
-	display_string_prepare_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nA required software update will automatically restart this computer in about ${display_string_prepare_time_estimate} minutes.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the update process."
-	display_string_prepare_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nA required software update will automatically restart this computer in about ${display_string_prepare_time_estimate} minutes.\n\nDuring this time you can continue to use the computer or lock the screen, but please do not restart or sleep the computer as it will prolong the update process."
+	display_string_prepare_title="${display_string_workflow_title} Systemneustart"
+	display_string_prepare_default_body="Eine erforderliche Softwareaktualisierung wird diesen Computer in etwa ${display_string_prepare_time_estimate} Minuten automatisch neu starten.\n\nWährend dieser Zeit können Sie den Computer weiterhin benutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Aktualisierungsprozess verlängert."
+	display_string_prepare_deadline_schedule_body="Ein geplanter Installationstermin am ${display_string_scheduled_install} ist verstrichen.\n\nEine erforderliche Softwareaktualisierung wird diesen Computer in etwa ${display_string_prepare_time_estimate} Minuten automatisch neu starten.\n\nWährend dieser Zeit können Sie den Computer weiterhin nutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Aktualisierungsprozess verlängert."
+	display_string_prepare_deadline_count_body="Sie haben die maximale Anzahl von ${display_string_deadline_count_maximum} Verschiebungen erreicht.\n\nEine erforderliche Softwareaktualisierung wird diesen Computer in etwa ${display_string_prepare_time_estimate} Minuten automatisch neu starten.\n\nWährend dieser Zeit können Sie den Computer weiterhin nutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Aktualisierungsprozess verlängert."
+	display_string_prepare_deadline_date_body="Die Frist zur Verschiebung vom ${display_string_deadline} ist abgelaufen.\n\nEine erforderliche Softwareaktualisierung wird diesen Computer in etwa ${display_string_prepare_time_estimate} Minuten automatisch neu starten.\n\nWährend dieser Zeit können Sie den Computer weiterhin nutzen oder den Bildschirm sperren. Bitte starten Sie den Computer jedoch nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Aktualisierungsprozess verlängert."
 	
 	#### Language for notification_restart(), a non-interactive notification informing the user that the computer is going to restart very soon.
 	# This is used for all softwareupdate workflows and near the end of the MDM workflow.
 	# This is used for both non-deadline and deadline workflows.
-	display_string_restart_title="${display_string_workflow_title} System Restart"
-	display_string_restart_default_body="This computer will automatically restart very soon.\n\nSave any open documents now."
-	display_string_restart_deadline_schedule_body="A scheduled installation date of ${display_string_scheduled_install} has passed.\n\nThis computer will automatically restart very soon.\n\nSave any open documents now."
-	display_string_restart_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nThis computer will automatically restart very soon.\n\nSave any open documents now."
-	display_string_restart_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nThis computer will automatically restart very soon.\n\nSave any open documents now."
+	display_string_restart_title="${display_string_workflow_title} Systemneustart"
+	display_string_restart_default_body="Dieser Computer wird in Kürze automatisch neu gestartet.\n\nBitte speichern Sie jetzt alle offenen Dokumente."
+	display_string_restart_deadline_schedule_body="Ein geplanter Installationstermin am ${display_string_scheduled_install} ist verstrichen.\n\nDieser Computer wird in Kürze automatisch neu gestartet.\n\nBitte speichern Sie jetzt alle offenen Dokumente."
+	display_string_restart_deadline_count_body="Sie haben die maximale Anzahl von ${display_string_deadline_count_maximum} Verschiebungen genutzt.\n\nDieser Computer wird in Kürze automatisch neu gestartet.\n\nBitte speichern Sie jetzt alle offenen Dokumente."
+	display_string_restart_deadline_date_body="Die Frist zur Verschiebung vom ${display_string_deadline} ist abgelaufen.\n\nDieser Computer wird in Kürze automatisch neu gestartet.\n\nBitte speichern Sie jetzt alle offenen Dokumente."
 	
 	#### Language for notification_non_system_updates(), a non-interactive notification informing the user that the workflow is installing non-system macOS software updates.
-	display_string_non_system_updates_title="Installing ${display_string_workflow_title} (No Restart)"
-	display_string_non_system_updates_body="Required macOS software updates are now installing.\n\nThe computer will not restart but some Apple applications (like Safari) may automatically restart.\n\nThis should only take a few minutes, but please do not restart or sleep the computer as it will prolong the update process."
+	display_string_non_system_updates_title="Installation von ${display_string_workflow_title} (kein Neustart)"
+	display_string_non_system_updates_body="Erforderliche macOS-Software-Updates werden jetzt installiert.\n\nDer Computer wird nicht neu gestartet, aber einige Apple-Anwendungen (wie Safari) können sich automatisch neu starten.\n\nDies sollte nur wenige Minuten dauern. Bitte starten Sie den Computer nicht neu und versetzen Sie ihn nicht in den Ruhezustand, da dies den Update-Prozess verlängern würde."
 	
 	#### Language for notification_failed(), a non-interactive notification informing the user that the managed update/upgrade process has failed.
 	# This is used for all update/upgrade workflows if they fail to start or timeout after a pending restart notification has been shown.
-	display_string_failed_title="${display_string_workflow_title} Failed"
-	display_string_failed_body="${display_string_workflow_title} installation failed to complete.\n\nYou will be notified later when the installation is attempted again."
+	display_string_failed_title="${display_string_workflow_title} fehlgeschlagen"
+	display_string_failed_body="Die Installation von ${display_string_workflow_title} konnte nicht abgeschlossen werden.\n\nSie werden später benachrichtigt, wenn ein weiterer Installationsversuch unternommen wird."
 	
 	#### Language for dialog_insufficient_storage(), a dialog informing the user that there is insufficient storage for macOS update/upgrade.
 	# This is used for both non-deadline and deadline workflows.
-	display_string_insufficient_storage_title="Insufficient Storage For ${display_string_workflow_title}"
-	display_string_insufficient_storage_timeout="* Please remove unecessary items in"
-	display_string_insufficient_storage_default_body="A required macOS update needs ${storage_required_gigabytes} GBs of storage space and only ${storage_available_gigabytes} GBs is available.\n\nPlease use the storage settings (shown behind this notification) to remove unnecessary items."
-	display_string_insufficient_storage_deadline_schedule_body="A scheduled installation date of ${display_string_scheduled_install} has passed.\n\nA required macOS update needs ${storage_required_gigabytes} GBs of storage space and only ${storage_available_gigabytes} GBs is available.\n\nPlease use the storage settings (shown behind this notification) to remove unnecessary items."
-	display_string_insufficient_storage_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nA required macOS update needs ${storage_required_gigabytes} GBs of storage space and only ${storage_available_gigabytes} GBs is available.\n\nPlease use the storage settings (shown behind this notification) to remove unnecessary items."
-	display_string_insufficient_storage_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nA required macOS update needs ${storage_required_gigabytes} GBs of storage space and only ${storage_available_gigabytes} GBs is available.\n\nPlease use the storage settings (shown behind this notification) to remove unnecessary items."
+	display_string_insufficient_storage_title="Unzureichender Speicherplatz für ${display_string_workflow_title}"
+	display_string_insufficient_storage_timeout="* Bitte entferne unnötige Dateien in"
+	display_string_insufficient_storage_default_body="Ein erforderliches macOS-Update benötigt ${storage_required_gigabytes} GB Speicherplatz, es sind jedoch nur ${storage_available_gigabytes} GB verfügbar.\n\nBitte verwende die Speichereinstellungen (hinter dieser Benachrichtigung angezeigt), um unnötige Dateien zu entfernen."
+	display_string_insufficient_storage_deadline_schedule_body="Ein geplanter Installationstermin am ${display_string_scheduled_install} ist verstrichen.\n\nEin erforderliches macOS-Update benötigt ${storage_required_gigabytes} GB Speicherplatz, es sind jedoch nur ${storage_available_gigabytes} GB verfügbar.\n\nBitte nutze die Speichereinstellungen (hinter dieser Benachrichtigung angezeigt), um unnötige Dateien zu entfernen."
+	display_string_insufficient_storage_deadline_count_body="Du hast die maximale Anzahl von ${display_string_deadline_count_maximum} Aufschüben erreicht.\n\nEin erforderliches macOS-Update benötigt ${storage_required_gigabytes} GB Speicherplatz, es sind jedoch nur ${storage_available_gigabytes} GB verfügbar.\n\nBitte nutze die Speichereinstellungen (hinter dieser Benachrichtigung angezeigt), um unnötige Dateien zu entfernen."
+	display_string_insufficient_storage_deadline_date_body="Die Frist für den Aufschub am ${display_string_deadline} ist abgelaufen.\n\nEin erforderliches macOS-Update benötigt ${storage_required_gigabytes} GB Speicherplatz, es sind jedoch nur ${storage_available_gigabytes} GB verfügbar.\n\nBitte nutze die Speichereinstellungen (hinter dieser Benachrichtigung angezeigt), um unnötige Dateien zu entfernen."
 	
 	#### Language for dialog_power_required(), a dialog notification informing the user that they need to plug the computer into AC power.
 	# This is used for both non-deadline and deadline workflows.
-	display_string_power_required_title="${display_string_workflow_title} Requires Power Source"
-	display_string_power_required_timeout="* Please connect power supply in"
-	display_string_power_required_default_body="You must connect this computer to a power supply in order to install the required macOS update."
-	display_string_power_required_deadline_schedule_body="A scheduled installation date of ${display_string_scheduled_install} has passed.\n\nYou must connect this computer to a power supply in order to install the required macOS update."
-	display_string_power_required_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nYou must connect this computer to a power supply in order to install the required macOS update."
-	display_string_power_required_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nYou must connect this computer to a power supply in order to install the required macOS update."
+	display_string_power_required_title="${display_string_workflow_title} benötigt Stromquelle"
+	display_string_power_required_timeout="* Bitte schließen Sie die Stromversorgung an"
+	display_string_power_required_default_body="Sie müssen diesen Computer an eine Stromquelle anschließen, um das erforderliche macOS-Update zu installieren."
+	display_string_power_required_deadline_schedule_body="Ein geplanter Installationstermin am ${display_string_scheduled_install} ist verstrichen.\n\nSie müssen diesen Computer an eine Stromquelle anschließen, um das erforderliche macOS-Update zu installieren."
+	display_string_power_required_deadline_count_body="Sie haben die maximale Anzahl von ${display_string_deadline_count_maximum} Verzögerungen erreicht.\n\nSie müssen diesen Computer an eine Stromquelle anschließen, um das erforderliche macOS-Update zu installieren."
+	display_string_power_required_deadline_date_body="Die Frist zur Verzögerung vom ${display_string_deadline} ist abgelaufen.\n\nSie müssen diesen Computer an eine Stromquelle anschließen, um das erforderliche macOS-Update zu installieren."
 	
 	#### Language for dialog_user_choice(), an interactive dialog giving the user a choice to schedule, defer, or restart.
-	display_string_user_choice_restart_title="${display_string_workflow_title} Requires System Restart"
-	display_string_user_choice_install_title="${display_string_workflow_title} Requires Installation (No Restart)"
-	display_string_user_choice_timeout="* Please make selection in"
-	display_string_user_choice_menu_title="Defer software update for:"
-	display_string_user_choice_default_body="• No deadline date and unlimited deferrals.\n"
-	display_string_user_choice_date_body="• Deferral available until ${display_string_deadline}.\n"
-	display_string_user_choice_count_body="• ${display_string_deadline_count} out of ${display_string_deadline_count_maximum} deferrals remaining.\n"
-	display_string_user_choice_date_count_body="• Deferral available until ${display_string_deadline}.\n\n• ${display_string_deadline_count} out of ${display_string_deadline_count_maximum} deferrals remaining.\n"
+	display_string_user_choice_restart_title="${display_string_workflow_title} erfordert einen Systemneustart"
+	display_string_user_choice_install_title="${display_string_workflow_title} erfordert Installation (kein Neustart)"
+	display_string_user_choice_timeout="* Bitte Auswahl treffen in"
+	display_string_user_choice_menu_title="Software-Update verschieben um:"
+	display_string_user_choice_default_body="• Kein Enddatum und unbegrenztes Verschieben.\n"
+	display_string_user_choice_date_body="• Verschiebung möglich bis ${display_string_deadline}.\n"
+	display_string_user_choice_count_body="• Noch ${display_string_deadline_count} von insgesamt ${display_string_deadline_count_maximum} Verschiebungen verfügbar.\n"
+	display_string_user_choice_date_count_body="• Verschiebung möglich bis ${display_string_deadline}.• Noch ${display_string_deadline_count} von insgesamt ${display_string_deadline_count_maximum} Verschiebungen verfügbar.\n"
 	
 	#### Language for dialog_user_schedule(), an interactive dialog allowing the user to schedule an installation.
-	display_string_user_schedule_restart_title="${display_string_workflow_title} Scheduled System Restart"
-	display_string_user_schedule_install_title="${display_string_workflow_title} Scheduled Installation (No Restart)"
-	display_string_user_schedule_timeout="* Please make selection in"
-	display_string_user_schedule_calendar_title="Select schedule below:"
-	display_string_user_schedule_default_body="• Select a date and time to sechedule this event."
-	display_string_user_schedule_date_body="• Schedule available until ${display_string_deadline}.\n\n• Select a date and time to sechedule this event."
+	display_string_user_schedule_restart_title="Geplanter Systemneustart für ${display_string_workflow_title}"
+	display_string_user_schedule_install_title="Geplante Installation von ${display_string_workflow_title} (kein Neustart)"
+	display_string_user_schedule_timeout="* Bitte treffen Sie eine Auswahl in"
+	display_string_user_schedule_calendar_title="Wählen Sie unten einen Zeitplan aus:"
+	display_string_user_schedule_default_body="• Wählen Sie ein Datum und eine Uhrzeit zur Terminplanung dieses Ereignisses aus."
+	display_string_user_schedule_date_body="• Terminplan verfügbar bis ${display_string_deadline}.\n\n• Wählen Sie ein Datum und eine Uhrzeit zur Planung dieses Ereignisses aus."
 	
 	#### Language for dialog_schedule_reminder(), an interactive dialog that notifies the user of a pending scheduled installation and optionally allows for rescheduling.
-	display_string_schedule_reminder_restart_title="${display_string_workflow_title} Scheduled System Restart Reminder"
-	display_string_schedule_reminder_install_title="${display_string_workflow_title} Scheduled Installation (No Restart) Reminder"
-	display_string_schedule_reminder_restart_timeout="* Automatic restart in"
-	display_string_schedule_reminder_install_timeout="* Automatic installation in"
-	display_string_schedule_reminder_default_body="• This event is scheduled for ${display_string_scheduled_install}."
-	display_string_schedule_reminder_reschedule_date_body="• This event is scheduled for ${display_string_scheduled_install}\n\n• Reschedule available until ${display_string_deadline}."
-	display_string_schedule_reminder_adjusted_body="The date and time you selected was adjusted to coordinate with scheduling requirements.\n\n• This event is scheduled for ${display_string_scheduled_install}."
-	display_string_schedule_reminder_adjusted_reschedule_date_body="The date and time you selected was adjusted to coordinate with scheduling requirements.\n\n• This event is scheduled for ${display_string_scheduled_install}.\n\n• Reschedule available until ${display_string_deadline}."
+	display_string_schedule_reminder_restart_title="Erinnerung: Geplanter Systemneustart für ${display_string_workflow_title}"
+	display_string_schedule_reminder_install_title="Erinnerung: Geplante Installation ohne Neustart für ${display_string_workflow_title}"
+	display_string_schedule_reminder_restart_timeout="* Automatischer Neustart in"
+	display_string_schedule_reminder_install_timeout="* Automatische Installation in"
+	display_string_schedule_reminder_default_body="• Dieses Ereignis ist für den ${display_string_scheduled_install} geplant."
+	display_string_schedule_reminder_reschedule_date_body="• Dieses Ereignis ist für den ${display_string_scheduled_install} geplant.\n\n• Eine Neuplanung ist bis zum ${display_string_deadline} möglich."
+	display_string_schedule_reminder_adjusted_body="Das von Ihnen ausgewählte Datum und die Uhrzeit wurden angepasst, um den Planungsanforderungen zu entsprechen.• Dieses Ereignis ist für den ${display_string_scheduled_install} geplant."
+	display_string_schedule_reminder_adjusted_reschedule_date_body="Das von Ihnen ausgewählte Datum und die Uhrzeit wurden angepasst, um den Planungsanforderungen zu entsprechen.• Dieses Ereignis ist für den ${display_string_scheduled_install} geplant.• Eine erneute Planung ist bis zum ${display_string_deadline} möglich."
 	
 	#### Language for dialog_soft_deadline(), an interactive dialog when a soft deadline has passed, giving the user only one button to continue the workflow.
-	display_string_soft_deadline_restart_title="${display_string_workflow_title} Requires System Restart"
-	display_string_soft_deadline_install_title="${display_string_workflow_title} Requires Installation (No Restart)"
-	display_string_soft_deadline_restart_timeout="* Automatic restart in"
-	display_string_soft_deadline_install_timeout="* Automatic installation in"
-	display_string_soft_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times."
-	display_string_soft_deadline_date_body="The deferment deadline has passed:\n${display_string_deadline}."
+	display_string_soft_deadline_restart_title="${display_string_workflow_title} erfordert einen Systemneustart"
+	display_string_soft_deadline_install_title="${display_string_workflow_title} erfordert eine Installation (kein Neustart erforderlich)"
+	display_string_soft_deadline_restart_timeout="* Automatischer Neustart in"
+	display_string_soft_deadline_install_timeout="* Automatische Installation in"
+	display_string_soft_deadline_count_body="Du hast die maximale Anzahl von ${display_string_deadline_count_maximum} Aufschiebungen erreicht."
+	display_string_soft_deadline_date_body="Die Frist für das Aufschieben ist verstrichen:\n${display_string_deadline}."
 	
 	#### Language for dialog_user_auth(), an interactive dialog to collect user credentials for macOS update/upgrade workflow
-	display_string_user_auth_title="${display_string_workflow_title} Requires Authentication"
-	display_string_user_auth_timeout="* Please enter password in"
-	display_string_user_auth_default_body="You must enter the password for user \"${current_user_real_name}\" to install ${display_string_workflow_title}.\n"
-	display_string_user_auth_download_body="You must enter the password for user \"${current_user_real_name}\" to download and prepare ${display_string_workflow_title}.\n"
-	display_string_user_auth_schedule_body="You must enter the password for user \"${current_user_real_name}\" to schedule the installation of ${display_string_workflow_title}.\n"
-	display_string_user_auth_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nYou must enter the password for user \"${current_user_real_name}\" to install the ${display_string_workflow_title}.\n"
-	display_string_user_auth_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nYou must enter the password for user \"${current_user_real_name}\" to install the ${display_string_workflow_title}.\n"
-	display_string_user_auth_password_title="Enter Password Here:"
-	display_string_user_auth_password_placeholder="Password Required"
-	display_string_user_auth_retry_default_body="You must enter the password for user \"${current_user_real_name}\" to install ${display_string_workflow_title}.\n"
-	display_string_user_auth_retry_download_body="You must enter the password for user \"${current_user_real_name}\" to download and prepare ${display_string_workflow_title}.\n"
-	display_string_user_auth_retry_schedule_body="You must enter the password for user \"${current_user_real_name}\" to schedule the installation of ${display_string_workflow_title}.\n"
-	display_string_user_auth_retry_deadline_count_body="You have deferred the maximum number of ${display_string_deadline_count_maximum} times.\n\nYou must enter the password for user \"${current_user_real_name}\" to install the ${display_string_workflow_title}.\n"
-	display_string_user_auth_retry_deadline_date_body="The deferment deadline of ${display_string_deadline} has passed.\n\nYou must enter the password for user \"${current_user_real_name}\" to install the ${display_string_workflow_title}.\n"
-	display_string_user_auth_retry_password_title="Authentication Failed - Try Password Again:"
-	display_string_user_auth_retry_password_placeholder="Password Required"
+	display_string_user_auth_title="${display_string_workflow_title} erfordert eine Authentifizierung"
+	display_string_user_auth_timeout="* Bitte Passwort eingeben in"
+	display_string_user_auth_default_body="Sie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} zu installieren. \n"
+	display_string_user_auth_download_body="Sie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} herunterzuladen und vorzubereiten.\n"
+	display_string_user_auth_schedule_body="Sie müssen das Passwort für den Benutzer \"${current_user_real_name}\" um die Installation von ${display_string_workflow_title} zu planen.\n"
+	display_string_user_auth_deadline_count_body="Sie haben die maximale Anzahl an Verschiebungen ${display_string_deadline_count_maximum} erreicht.\n\nSie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} zu installieren.\n"
+	display_string_user_auth_deadline_date_body="Die Frist zur Aufschiebung ${display_string_deadline} ist abgelaufen.\n\nSie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} zu installieren.\n"
+	display_string_user_auth_password_title="Hier Passwort eingeben:"
+	display_string_user_auth_password_placeholder="Passwort benötigt"
+	display_string_user_auth_retry_default_body="Sie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} zu installieren.\n"
+	display_string_user_auth_retry_download_body="Sie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} herunterzuladen und vorzubereiten.\n"
+	display_string_user_auth_retry_schedule_body="Sie müssen das Passwort für den Benutzer \"${current_user_real_name}\" um die Installation von ${display_string_workflow_title} zu planen.\n"
+	display_string_user_auth_retry_deadline_count_body="Sie haben die maximale Anzahl an Verschiebungen ${display_string_deadline_count_maximum} erreicht.\n\nSie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} zu installieren.\n"
+	display_string_user_auth_retry_deadline_date_body="Die Frist zur Aufschiebung ${display_string_deadline} ist abgelaufen.\n\nSie müssen das Passwort für den Benutzer \"${current_user_real_name}\" eingeben, um ${display_string_workflow_title} zu installieren.\n"
+	display_string_user_auth_retry_password_title="Authentifizierung fehlgeschlagen – Bitte Passwort erneut eingeben:"
+	display_string_user_auth_retry_password_placeholder="Passwort benötigt"
 	
 	#### The following code sets the appropriate ${display_icon} for macOS light or dark mode but it does not affect the display strings.
 	{ [[ "${current_user_appearance_mode}" == "LIGHT" ]] || [[ -z "${current_user_appearance_mode}" ]]; } && display_icon="${display_icon_light}"
